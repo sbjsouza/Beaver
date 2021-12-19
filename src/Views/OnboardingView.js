@@ -4,8 +4,6 @@ import { useHistory } from "react-router";
 
 import { Box, Image } from "@chakra-ui/react";
 
-import map from "../Resources/Images/map.png";
-import mapAlternative from "../Resources/Images/mapAlternative.png";
 import mapCustom from "../Resources/Images/mapCustom.png";
 
 import { HOME } from "../Constants/Routes";
@@ -23,7 +21,6 @@ const Onboardingview = () => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log("destination: ", destination);
     if (destination !== undefined) {
       handlerSearchButtonState(false);
     }
@@ -38,7 +35,14 @@ const Onboardingview = () => {
   };
 
   const onClickSearchHandler = () => {
-    history.push(HOME);
+    history.push({
+      pathname: HOME,
+      state: {
+        destination,
+        sliderMinValue,
+        sliderMaxValue,
+      },
+    });
   };
 
   const onChangeSlider = (values) => {

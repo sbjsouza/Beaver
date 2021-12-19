@@ -1,6 +1,16 @@
 import React from "react";
 
-import { Box, Flex, Image, Wrap, WrapItem, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Wrap,
+  WrapItem,
+  Text,
+  Spacer,
+} from "@chakra-ui/react";
+
+import { useHistory, useLocation } from "react-router";
 
 import SideBar from "../Components/SideBar";
 
@@ -10,12 +20,22 @@ import sideMap from "../Resources/Images/sideMap.png";
 import Card from "../Components/Card";
 
 import mockData from "../database/LocalJson.json";
-import CardGroup from "../Components/CardGroup";
+import CardGroupAlt from "../Components/CardGroupAlt";
+
+import { PrimaryColor } from "../Constants/Colors";
+import Filter from "../Components/Filter";
+import FilterButton from "../Components/FilterButton";
 
 const HomeView = () => {
   let selectedButtonIndex = 1;
   let data = mockData.data;
-  let cardList = mockData["apartments"];
+
+  const location = useLocation();
+  const state = location.state;
+
+  console.log("Destination: ", state);
+
+  const history = useHistory();
 
   return (
     <Flex
@@ -27,13 +47,26 @@ const HomeView = () => {
     >
       <SideBar selectedButtonIndex={selectedButtonIndex} />
       <Box ml="60px">
+        <Flex w="100%" mt="40px" px="8">
+          <Filter />
+          <Spacer maxW="20px" />
+          <FilterButton />
+        </Flex>
+
         {data.map((category) => (
-          <Box p="8" mt="12">
-            <Text mb="4">{category["category-name"]}</Text>
+          <Box p="8" mt="0">
+            <Text
+              mb="4"
+              fontSize={"21px"}
+              fontWeight={"600"}
+              color={PrimaryColor}
+            >
+              {category["category-name"]}
+            </Text>
             <Wrap spacing="4">
               {category.data.map((card) => (
                 <WrapItem>
-                  <CardGroup
+                  <CardGroupAlt
                     firstCard={
                       <Card
                         imageUrl={card.imageUrl}

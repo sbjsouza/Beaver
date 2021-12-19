@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Button, Flex, Spacer, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Spacer, Text } from "@chakra-ui/react";
 
 import { PrimaryColor } from "../Constants/Colors";
 
@@ -30,6 +30,7 @@ const CardGroup = ({
           {secondCard}
         </Box>
       </Flex>
+      <Divider mt="5" />
       <Box mt="6">
         <Flex w="100%" alignItems={"center"} justifyContent={"space-between"}>
           <Flex
