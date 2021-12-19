@@ -11,7 +11,8 @@ import { HOME } from "../Constants/Routes";
 import Topbar from "../Components/TopBar";
 import Onboardingsearch from "../Components/OnboardingSearch";
 
-import neighborhoodData from "../database/NeighborhoodData.json";
+import axios from "axios";
+import { getAvailableNeighborhoods } from "../Constants/Endpoints";
 
 const Onboardingview = () => {
   const [budget, setBudget] = useState();
@@ -19,14 +20,30 @@ const Onboardingview = () => {
   const [sliderMinValue, setSliderMinValue] = useState(800);
   const [sliderMaxValue, setSliderMaxValue] = useState(2100);
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
+  const [destinationList, setDestinationList] = useState([]);
 
   const history = useHistory();
+
+  useEffect(() => {
+    axios
+      .get(getAvailableNeighborhoods)
+      .then((res) => {
+        handlerDestinationList(res.data);
+      })
+      .catch((err) => {
+        console.log("error: ", err);
+      });
+  }, []);
 
   useEffect(() => {
     if (destination !== undefined) {
       handlerSearchButtonState(false);
     }
   }, [destination]);
+
+  const handlerDestinationList = (list) => {
+    setDestinationList(list);
+  };
 
   const handlerBudget = (newBudget) => {
     setBudget(newBudget);
@@ -57,14 +74,6 @@ const Onboardingview = () => {
     setIsSearchButtonDisabled(newState);
   };
 
-  const tagSuggestion = [
-    "Recife, PE",
-    "Olinda, PE",
-    "Belo Horizonte, MG",
-    "Campina Grande, PB",
-    "Rio Grande do Sul, RS",
-  ];
-
   return (
     <Box
       w="100%"
@@ -89,7 +98,7 @@ const Onboardingview = () => {
         destination={destination}
         handlerBudget={handlerBudget}
         handlerDestination={handlerDestination}
-        tagSuggestion={neighborhoodData}
+        tagSuggestion={destinationList}
         isSearchButtonDisabled={isSearchButtonDisabled}
         onClickSearch={onClickSearchHandler}
       />

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Badge, Button, Flex, Image, Tag } from "@chakra-ui/react";
+import { Box, Badge, Flex, Image } from "@chakra-ui/react";
 
 import { StarIcon } from "@chakra-ui/icons";
 

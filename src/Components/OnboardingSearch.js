@@ -1,15 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  NumberInput,
-  NumberInputField,
-  Spacer,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Spacer, Text } from "@chakra-ui/react";
 
 import LocationSearchBar from "./LocationSearchBar";
 import TagRow from "./TagRow";

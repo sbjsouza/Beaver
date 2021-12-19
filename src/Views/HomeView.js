@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Box,
@@ -19,24 +19,34 @@ import { BackgroundColor } from "../Constants/Colors";
 import sideMap from "../Resources/Images/sideMap.png";
 import Card from "../Components/Card";
 
-import mockData from "../database/NewLocalJson.json";
-
 import CardGroupAlt from "../Components/CardGroupAlt";
 
 import { PrimaryColor } from "../Constants/Colors";
 import Filter from "../Components/Filter";
 import FilterButton from "../Components/FilterButton";
 
+import axios from "axios";
+import { getNeighborhoodData } from "../Constants/Endpoints";
+
 const HomeView = () => {
+  const [data, setData] = useState();
   let selectedButtonIndex = 1;
-  let data = mockData;
 
   const location = useLocation();
   const state = location.state;
 
-  console.log("Destination: ", state);
-
   const history = useHistory();
+
+  useEffect(() => {
+    axios
+      .get(getNeighborhoodData + state.destination)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log("error: ", err);
+      });
+  }, []);
 
   return (
     <Flex
@@ -62,7 +72,7 @@ const HomeView = () => {
         >
           Combos
         </Text>
-        {data.map((combo) => (
+        {data?.map((combo) => (
           <Box px="8" mt="2">
             <Wrap spacing="4">
               <WrapItem>

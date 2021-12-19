@@ -26,7 +26,7 @@ const CardGroupAlt = ({
         <Spacer w="6" />
         <Box>
           <Text fontWeight="700" py="2">
-            Alimentação
+            Transporte
           </Text>
           {secondCard}
         </Box>
