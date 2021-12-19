@@ -15,7 +15,7 @@ const LocationSearchBar = ({ setValue = () => {}, value = "" }) => {
         children={<BiSearch size="25px" color={PrimaryColor} />}
       />
       <Input
-        w="370px"
+        w="100%"
         h="60px"
         pl="12"
         bgColor="#F8F8F8"

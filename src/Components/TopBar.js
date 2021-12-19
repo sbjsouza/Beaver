@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Avatar, Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Avatar, Button, Flex, Image } from "@chakra-ui/react";
 
 import { BiHome, BiCart } from "react-icons/bi";
 

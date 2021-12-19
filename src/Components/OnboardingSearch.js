@@ -8,27 +8,33 @@ import {
   NumberInput,
   NumberInputField,
   Spacer,
+  Text,
 } from "@chakra-ui/react";
 
 import LocationSearchBar from "./LocationSearchBar";
 import TagRow from "./TagRow";
+import PriceSlider from "./PriceSlider";
 
 import { BiChevronRight } from "react-icons/bi";
 
 import { PrimaryColor, PrimaryBackgroundColor } from "../Constants/Colors";
 
 const OnboardingSearch = ({
+  sliderMinValue = 0,
+  sliderMaxValue = 0,
+  isSearchButtonDisabled,
   budget = "",
   destination = "",
   tagSuggestion = [],
   handlerBudget = () => {},
   handlerDestination = () => {},
   onClickSearch = () => {},
+  onChangeSlider = () => {},
 }) => {
   return (
     <Box
       w="730px"
-      h="280px"
+      h="426px"
       p="6"
       borderRadius="10px"
       position="absolute"
@@ -52,23 +58,18 @@ const OnboardingSearch = ({
             value={destination}
             setValue={handlerDestination}
           />
-          <NumberInput
-            focusBorderColor={PrimaryColor}
-            onChange={(newBudget) => handlerBudget(newBudget)}
-            value={budget}
-          >
-            <NumberInputField
-              w="160px"
-              h="60px"
-              bgColor="#F8F8F8"
-              color={PrimaryColor}
-              focusBorderColor={PrimaryColor}
-              opacity="50%"
-              borderRadius="10px"
-              boxShadow="md"
-              placeholder={"R$1200,00/mês"}
-            />
-          </NumberInput>
+        </Flex>
+        <Flex my="6">
+          <Text fontSize={"16px"} fontWeight={"900"}>
+            Quanto você quer gastar mensalmente?
+          </Text>
+        </Flex>
+        <Flex>
+          <PriceSlider
+            onChangeSlider={onChangeSlider}
+            sliderMinValue={sliderMinValue}
+            sliderMaxValue={sliderMaxValue}
+          />
           <Button
             w="190px"
             h="60px"
@@ -77,6 +78,7 @@ const OnboardingSearch = ({
             bgColor={PrimaryColor}
             color="white"
             size="lg"
+            isDisabled={isSearchButtonDisabled}
             onClick={() => {
               onClickSearch();
             }}
@@ -88,8 +90,7 @@ const OnboardingSearch = ({
             <BiChevronRight size="30px" mr="0" />
           </Button>
         </Flex>
-
-        <Spacer h="20px" />
+        <Spacer h="35px" />
         <TagRow tagList={tagSuggestion} />
       </Box>
     </Box>

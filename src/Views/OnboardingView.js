@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useHistory } from "react-router";
 
@@ -16,8 +16,18 @@ import Onboardingsearch from "../Components/OnboardingSearch";
 const Onboardingview = () => {
   const [budget, setBudget] = useState();
   const [destination, setDestination] = useState();
+  const [sliderMinValue, setSliderMinValue] = useState(800);
+  const [sliderMaxValue, setSliderMaxValue] = useState(2100);
+  const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
 
   const history = useHistory();
+
+  useEffect(() => {
+    console.log("destination: ", destination);
+    if (destination !== undefined) {
+      handlerSearchButtonState(false);
+    }
+  }, [destination]);
 
   const handlerBudget = (newBudget) => {
     setBudget(newBudget);
@@ -29,6 +39,16 @@ const Onboardingview = () => {
 
   const onClickSearchHandler = () => {
     history.push(HOME);
+  };
+
+  const onChangeSlider = (values) => {
+    console.log("Values: ", values, values.first);
+    setSliderMinValue(values[0]);
+    setSliderMaxValue(values[1]);
+  };
+
+  const handlerSearchButtonState = (newState) => {
+    setIsSearchButtonDisabled(newState);
   };
 
   const tagSuggestion = [
@@ -56,11 +76,15 @@ const Onboardingview = () => {
       />
       <Topbar selectedButtonIndex={0} />
       <Onboardingsearch
+        sliderMinValue={sliderMinValue}
+        sliderMaxValue={sliderMaxValue}
+        onChangeSlider={onChangeSlider}
         budget={budget}
         destination={destination}
         handlerBudget={handlerBudget}
         handlerDestination={handlerDestination}
         tagSuggestion={tagSuggestion}
+        isSearchButtonDisabled={isSearchButtonDisabled}
         onClickSearch={onClickSearchHandler}
       />
     </Box>
