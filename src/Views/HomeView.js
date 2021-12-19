@@ -106,6 +106,8 @@ const HomeView = () => {
                   value={combo.totalPrice}
                   cashbackPercentage={combo.cashbackPercentage}
                   cashbackValue={combo.cashbackValue}
+                  firstLink={combo.link1}
+                  secondLink={combo.link2}
                 />
               </WrapItem>
             </Wrap>

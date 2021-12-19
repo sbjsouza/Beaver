@@ -10,6 +10,8 @@ const CardGroupAlt = ({
   value = "1320.00",
   cashbackPercentage = 15,
   cashbackValue = "198.00",
+  firstLink = "",
+  secondLink = "",
 }) => {
   return (
     <Flex w="100%" bgColor="red.50" borderRadius={10} p="6" my="2">
@@ -93,7 +95,17 @@ const CardGroupAlt = ({
           alignItems="flex-end"
           justifyContent="space-between"
         >
-          <Button w="100%" size="lg" bgColor={"red.100"} color="red.800" mb="6">
+          <Button
+            w="100%"
+            size="lg"
+            bgColor={"red.100"}
+            color="red.800"
+            mb="6"
+            onClick={() => {
+              window.open(firstLink, "_blank");
+              window.open(secondLink, "_blank");
+            }}
+          >
             Comprar combo
           </Button>
           <Text fontSize={"12px"}>
