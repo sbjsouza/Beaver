@@ -19,7 +19,8 @@ import { BackgroundColor } from "../Constants/Colors";
 import sideMap from "../Resources/Images/sideMap.png";
 import Card from "../Components/Card";
 
-import mockData from "../database/LocalJson.json";
+import mockData from "../database/NewLocalJson.json";
+
 import CardGroupAlt from "../Components/CardGroupAlt";
 
 import { PrimaryColor } from "../Constants/Colors";
@@ -28,7 +29,7 @@ import FilterButton from "../Components/FilterButton";
 
 const HomeView = () => {
   let selectedButtonIndex = 1;
-  let data = mockData.data;
+  let data = mockData;
 
   const location = useLocation();
   const state = location.state;
@@ -52,50 +53,51 @@ const HomeView = () => {
           <Spacer maxW="20px" />
           <FilterButton />
         </Flex>
-
-        {data.map((category) => (
-          <Box p="8" mt="0">
-            <Text
-              mb="4"
-              fontSize={"21px"}
-              fontWeight={"600"}
-              color={PrimaryColor}
-            >
-              {category["category-name"]}
-            </Text>
+        <Text
+          px="8"
+          my="6"
+          fontSize={"21px"}
+          fontWeight={"600"}
+          color={PrimaryColor}
+        >
+          Combos
+        </Text>
+        {data.map((combo) => (
+          <Box px="8" mt="2">
             <Wrap spacing="4">
-              {category.data.map((card) => (
-                <WrapItem>
-                  <CardGroupAlt
-                    firstCard={
-                      <Card
-                        imageUrl={card.imageUrl}
-                        imageAlt={card.imageAlt}
-                        tag1={card.tag1}
-                        tag2={card.tag2}
-                        isLowPrice={card.isLowPrice}
-                        title={card.title}
-                        formattedPrice={card.formattedPrice}
-                        reviewCount={card.reviewCount}
-                        rating={card.rating}
-                      />
-                    }
-                    secondCard={
-                      <Card
-                        imageUrl={card.imageUrl}
-                        imageAlt={card.imageAlt}
-                        tag1={card.tag1}
-                        tag2={card.tag2}
-                        isLowPrice={card.isLowPrice}
-                        title={card.title}
-                        formattedPrice={card.formattedPrice}
-                        reviewCount={card.reviewCount}
-                        rating={card.rating}
-                      />
-                    }
-                  />
-                </WrapItem>
-              ))}
+              <WrapItem>
+                <CardGroupAlt
+                  firstCard={
+                    <Card
+                      imageUrl={combo.data.moradia.imageUrl}
+                      imageAlt={combo.data.moradia.imageAlt}
+                      tag1={combo.data.moradia.tag1}
+                      tag2={combo.data.moradia.tag2}
+                      isLowPrice={combo.data.moradia.isLowPrice}
+                      title={combo.data.moradia.title}
+                      formattedPrice={combo.data.moradia.formattedPrice}
+                      reviewCount={combo.data.moradia.reviewCount}
+                      rating={combo.data.moradia.rating}
+                    />
+                  }
+                  secondCard={
+                    <Card
+                      imageUrl={combo.data.transporte.imageUrl}
+                      imageAlt={combo.data.transporte.imageAlt}
+                      tag1={combo.data.transporte.tag1}
+                      tag2={combo.data.transporte.tag2}
+                      isLowPrice={combo.data.transporte.isLowPrice}
+                      title={combo.data.transporte.title}
+                      formattedPrice={combo.data.transporte.formattedPrice}
+                      reviewCount={combo.data.transporte.reviewCount}
+                      rating={combo.data.transporte.rating}
+                    />
+                  }
+                  value={combo.totalPrice}
+                  cashbackPercentage={combo.cashbackPercentage}
+                  cashbackValue={combo.cashbackValue}
+                />
+              </WrapItem>
             </Wrap>
           </Box>
         ))}

@@ -11,6 +11,8 @@ import { HOME } from "../Constants/Routes";
 import Topbar from "../Components/TopBar";
 import Onboardingsearch from "../Components/OnboardingSearch";
 
+import neighborhoodData from "../database/NeighborhoodData.json";
+
 const Onboardingview = () => {
   const [budget, setBudget] = useState();
   const [destination, setDestination] = useState();
@@ -87,7 +89,7 @@ const Onboardingview = () => {
         destination={destination}
         handlerBudget={handlerBudget}
         handlerDestination={handlerDestination}
-        tagSuggestion={tagSuggestion}
+        tagSuggestion={neighborhoodData}
         isSearchButtonDisabled={isSearchButtonDisabled}
         onClickSearch={onClickSearchHandler}
       />

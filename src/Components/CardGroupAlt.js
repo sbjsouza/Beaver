@@ -51,7 +51,7 @@ const CardGroupAlt = ({
               </Text>
             </Flex>
             <Flex w="100%" alignItems={"flex-end"} justifyContent={"flex-end"}>
-              <Text fontWeight={"400"} fontSize={"21px"} color={PrimaryColor}>
+              <Text fontWeight={"400"} fontSize={"17px"} color={PrimaryColor}>
                 -R${cashbackValue}{" "}
                 <text style={{ fontSize: "12px", color: "black" }}>
                   de cashback

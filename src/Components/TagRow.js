@@ -9,7 +9,7 @@ const TagRow = ({ tagList = [] }) => {
     <Flex w="100%" h="40px">
       {tagList.map((tag) => (
         <Tag
-          key={tag}
+          key={tag.name}
           mr="2"
           px="2"
           h="8"
@@ -19,7 +19,7 @@ const TagRow = ({ tagList = [] }) => {
           opacity="80%"
           cursor="pointer"
         >
-          {tag}
+          {tag.name}
         </Tag>
       ))}
     </Flex>

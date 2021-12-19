@@ -57,6 +57,7 @@ const OnboardingSearch = ({
           <LocationSearchBar
             value={destination}
             setValue={handlerDestination}
+            tagList={tagSuggestion}
           />
         </Flex>
         <Flex my="6">
