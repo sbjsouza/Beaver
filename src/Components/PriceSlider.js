@@ -33,20 +33,20 @@ const PriceSlider = ({
           onChangeSlider(val);
         }}
         defaultValue={[sliderMinValue, sliderMaxValue]}
-        min={0}
-        max={3000}
+        min={500}
+        max={20000}
         step={100}
       >
         <RangeSliderTrack bg="red.100">
           <RangeSliderFilledTrack bg="tomato" />
         </RangeSliderTrack>
         <RangeSliderThumb boxSize={6} index={0}>
-          <Flex position={"relative"} top={"-25px"}>
+          <Flex position={"relative"} top={"-25px"} left={"15px"}>
             <Text fontWeight={"700"}>R${sliderMinValue}</Text>
           </Flex>
         </RangeSliderThumb>
         <RangeSliderThumb boxSize={6} index={1}>
-          <Flex position={"relative"} top={"-25px"}>
+          <Flex position={"relative"} top={"-25px"} left={"-20px"}>
             <Text fontWeight={"700"}>R${sliderMaxValue}</Text>
           </Flex>
         </RangeSliderThumb>

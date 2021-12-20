@@ -17,8 +17,8 @@ import { getAvailableNeighborhoods } from "../Constants/Endpoints";
 const Onboardingview = () => {
   const [budget, setBudget] = useState();
   const [destination, setDestination] = useState();
-  const [sliderMinValue, setSliderMinValue] = useState(800);
-  const [sliderMaxValue, setSliderMaxValue] = useState(2100);
+  const [sliderMinValue, setSliderMinValue] = useState(500);
+  const [sliderMaxValue, setSliderMaxValue] = useState(6900);
   const [isSearchButtonDisabled, setIsSearchButtonDisabled] = useState(true);
   const [destinationList, setDestinationList] = useState([]);
 
