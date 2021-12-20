@@ -62,7 +62,7 @@ const Card = ({
           </Box>
         </Box>
 
-        <Box display="flex" mt="2" alignItems="center">
+        {/* <Box display="flex" mt="2" alignItems="center">
           {Array(5)
             .fill("")
             .map((_, i) => (
@@ -71,7 +71,7 @@ const Card = ({
           <Box as="span" ml="2" color="gray.600" fontSize="sm">
             {reviewCount} reviews
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

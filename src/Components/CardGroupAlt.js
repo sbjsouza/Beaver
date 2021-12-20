@@ -15,16 +15,18 @@ const CardGroupAlt = ({
 }) => {
   return (
     <Flex w="100%" bgColor="red.50" borderRadius={10} p="6" my="2">
-      <Flex w="100%" alignItems={"center"}>
+      <Flex w="100%" alignItems={"flex-start"}>
         <Box>
           <Text fontWeight="700" py="2">
             Moradia
           </Text>
           {firstCard}
         </Box>
-        <Text ml="5" fontSize={"30px"} fontWeight={"300"} color={"red.500"}>
-          +
-        </Text>
+        <Flex w="60px" h="100%" alignItems={"center"}>
+          <Text ml="5" fontSize={"30px"} fontWeight={"300"} color={"red.500"}>
+            +
+          </Text>
+        </Flex>
         <Spacer w="6" />
         <Box>
           <Text fontWeight="700" py="2">

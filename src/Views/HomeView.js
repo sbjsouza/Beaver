@@ -10,7 +10,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-import { useHistory, useLocation } from "react-router";
+import { useLocation } from "react-router";
 
 import SideBar from "../Components/SideBar";
 
@@ -35,11 +35,14 @@ const HomeView = () => {
   const location = useLocation();
   const state = location.state;
 
-  const history = useHistory();
-
   useEffect(() => {
     axios
-      .get(getNeighborhoodData + state.destination)
+      .get(
+        getNeighborhoodData +
+          state.destination +
+          `&maxPrice=` +
+          state.sliderMaxValue
+      )
       .then((res) => {
         setData(res.data);
       })
